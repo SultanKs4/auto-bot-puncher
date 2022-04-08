@@ -16,7 +16,7 @@ async def on_ready():
 
 @tasks.loop(minutes=1, count=10)
 async def send_message_mudae():
-    mudae = bot.get_channel(int(os.getenv('TEST_CHANNEL_ID_MUDAE')))
+    mudae = bot.get_channel(int(os.getenv('CHANNEL_ID_MUDAE')))
     await mudae.send("$w")
 
 
@@ -28,7 +28,7 @@ async def send_message_meme():
 
 @tasks.loop(minutes=1, count=10)
 async def send_message_owo():
-    owo = bot.get_channel(int(os.getenv('TEST_CHANNEL_ID_OWO')))
+    owo = bot.get_channel(int(os.getenv('CHANNEL_ID_OWO')))
     await owo.send("owo hunt")
 
 
@@ -49,7 +49,7 @@ async def after_send_message_meme():
 
 @send_message_owo.after_loop
 async def after_send_message_owo_three():
-    owo = bot.get_channel(int(os.getenv('TEST_CHANNEL_ID_OWO')))
+    owo = bot.get_channel(int(os.getenv('CHANNEL_ID_OWO')))
     if len(sys.argv) == 2:
         if sys.argv[1] == "daily":
             await owo.send("owo daily")
