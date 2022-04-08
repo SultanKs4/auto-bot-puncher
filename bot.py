@@ -30,8 +30,9 @@ async def send_message():
 @send_message.before_loop
 async def before_send_message():
     await bot.wait_until_ready()
-    if sys.argv[1] == "daily":
-        await send_message_daily()
+    if len(sys.argv) == 2:
+        if sys.argv[1] == "daily":
+            await send_message_daily()
 
 
 @send_message.after_loop
@@ -45,6 +46,7 @@ async def after_send_message():
     sleep(2)
     await owo.send("owo cowoncy")
     print("All job done")
+    sys.exit()
 
 
 async def send_message_daily():
